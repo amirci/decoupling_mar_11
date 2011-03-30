@@ -8,7 +8,9 @@
              MinWidth="30"
              DockPanel.Dock="Top">
     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-        <TextBox Width="200">Enter your movie here</TextBox>
-        <Button Width="100">Add</Button>
+        <TextBox Width="200"
+                 Text="{Binding Title}"/>
+        <Button Width="100"
+                Command="{Binding Add}">Add</Button>
     </StackPanel>
 </UserControl>

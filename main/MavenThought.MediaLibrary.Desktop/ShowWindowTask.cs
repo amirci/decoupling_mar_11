@@ -1,5 +1,6 @@
 using System.Windows;
 using Bootstrap;
+using Castle.Windsor;
 using MavenThought.MediaLibrary.Desktop.AddMovie;
 
 namespace MavenThought.MediaLibrary.Desktop
@@ -8,7 +9,9 @@ namespace MavenThought.MediaLibrary.Desktop
     {
         public void Run()
         {
-            Application.Current.MainWindow = new MainWindow(new AddMovieView());
+            var container = (IWindsorContainer) Bootstrapper.GetContainer();
+
+            Application.Current.MainWindow = new MainWindow(container.Resolve<AddMovieView>());
 
             Application.Current.MainWindow.Show();
         }
