@@ -87,7 +87,7 @@
     <Compile Include="Events\IMovieAdded.cs" />
     <Compile Include="netfx\System\Guard.cs" />
     <Compile Include="netfx\System\Windows\Input\DelegateCommand.cs" />
-    <Compile Include="Tasks\ILibraryView.cs" />
+    <Compile Include="ILibraryView.cs" />
     <Compile Include="Tasks\RegisterHandlersTask.cs" />
     <Compile Include="Registration.cs" />
     <Compile Include="Tasks\ShowWindowTask.cs" />

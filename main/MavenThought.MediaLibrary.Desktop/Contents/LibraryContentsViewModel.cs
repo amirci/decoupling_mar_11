@@ -1,3 +1,4 @@
+using MavenThought.Commons.Events;
 using MavenThought.Commons.WPF.Events;
 using MavenThought.MediaLibrary.Desktop.Events;
 
@@ -6,8 +7,13 @@ namespace MavenThought.MediaLibrary.Desktop.Contents
     /// <summary>
     /// View model to show the contents
     /// </summary>
-    public class LibraryContentsViewModel : IHandleEventsOfType<IMovieAdded>
+    public class LibraryContentsViewModel : AbstractNotifyPropertyChanged, IHandleEventsOfType<IMovieAdded> 
     {
+        public LibraryContentsViewModel()
+        {
+            this.Contents = "This are the contents of the library";
+        }
+
         /// <summary>
         /// Gets or sets the contents
         /// </summary>
@@ -20,6 +26,8 @@ namespace MavenThought.MediaLibrary.Desktop.Contents
         public void Handle(IMovieAdded @event)
         {
             this.Contents = string.Format("The movie {0} was added to the collection", @event.Movie.Title);
+
+            this.OnPropertyChanged(() => Contents);
         }
     }
 }

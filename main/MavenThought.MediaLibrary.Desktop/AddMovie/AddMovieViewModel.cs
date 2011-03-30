@@ -3,6 +3,7 @@ using System.Windows.Input;
 using MavenThought.Commons.WPF.Events;
 using MavenThought.MediaLibrary.Core;
 using MavenThought.MediaLibrary.Desktop.Events;
+using MavenThought.MediaLibrary.Desktop.netfx.System.Windows.Input;
 using MavenThought.MediaLibrary.Domain;
 
 namespace MavenThought.MediaLibrary.Desktop.AddMovie
