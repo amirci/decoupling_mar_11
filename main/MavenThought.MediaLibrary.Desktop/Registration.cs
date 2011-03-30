@@ -6,7 +6,9 @@ using MavenThought.MediaLibrary.Core;
 using MavenThought.MediaLibrary.Desktop.AddMovie;
 using MavenThought.MediaLibrary.Desktop.Contents;
 using MavenThought.MediaLibrary.Desktop.Poster;
+using MavenThought.MediaLibrary.Desktop.Reviews;
 using MavenThought.MediaLibrary.Domain;
+using Microsoft.Practices.ServiceLocation;
 
 namespace MavenThought.MediaLibrary.Desktop
 {
@@ -20,12 +22,24 @@ namespace MavenThought.MediaLibrary.Desktop
                     .ImplementedBy<MovieLibrary>(),
                 Component
                     .For<IEventAggregator>()
-                    .ImplementedBy<EventAggregator>());
+                    .ImplementedBy<EventAggregator>(),
+                Component
+                    .For<IWindsorContainer>()
+                    .Instance(container));
 
             RegisterViews(container);
+
+            RegisterCritics(container);
         }
 
-        private void RegisterViews(IWindsorContainer container)
+        private static void RegisterCritics(IWindsorContainer container)
+        {
+            var descriptor = AllTypes.FromThisAssembly().BasedOn<IMovieCritic>();
+
+            container.Register(descriptor);
+        }
+
+        private static void RegisterViews(IWindsorContainer container)
         {
             container.Register(
                 // Add movie
@@ -38,6 +52,16 @@ namespace MavenThought.MediaLibrary.Desktop
                     .Parameters(Parameter
                                     .ForKey("DataContext")
                                     .Eq("${AddViewVM}")),
+                // Reviews
+                Component
+                    .For<ReviewsViewModel>()
+                    .Named("ReviewsVM"),
+                Component
+                    .For<ILibraryView>()
+                    .ImplementedBy<ReviewsView>()
+                    .Parameters(Parameter
+                                    .ForKey("DataContext")
+                                    .Eq("${ReviewsVM}")),
                 // Poster
                 Component
                     .For<PosterViewModel>()

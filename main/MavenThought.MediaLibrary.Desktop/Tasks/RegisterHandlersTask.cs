@@ -13,10 +13,12 @@ namespace MavenThought.MediaLibrary.Desktop.Tasks
 
             var ea = container.Resolve<IEventAggregator>();
 
-            ea.Subscribe(EventHandlers
-                             .From
-                             .CurrentAssembly()
-                             .Factory(ServiceLocator.Current));
+            var subscriptions = EventHandlers
+                .From
+                .CurrentAssembly()
+                .Factory(ServiceLocator.Current);
+
+            ea.Subscribe(subscriptions);
         }
 
         public void Reset()
