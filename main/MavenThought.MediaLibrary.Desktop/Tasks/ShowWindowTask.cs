@@ -1,9 +1,9 @@
+using System.Linq;
 using System.Windows;
 using Bootstrap;
 using Castle.Windsor;
-using MavenThought.MediaLibrary.Desktop.AddMovie;
 
-namespace MavenThought.MediaLibrary.Desktop
+namespace MavenThought.MediaLibrary.Desktop.Tasks
 {
     public class ShowWindowTask : IStartupTask
     {
@@ -11,7 +11,9 @@ namespace MavenThought.MediaLibrary.Desktop
         {
             var container = (IWindsorContainer) Bootstrapper.GetContainer();
 
-            Application.Current.MainWindow = new MainWindow(container.Resolve<AddMovieView>());
+            var children = container.ResolveAll<ILibraryView>().Cast<UIElement>();
+
+            Application.Current.MainWindow = new MainWindow(children);
 
             Application.Current.MainWindow.Show();
         }

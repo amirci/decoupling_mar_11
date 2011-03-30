@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using MavenThought.Commons.Extensions;
 
 namespace MavenThought.MediaLibrary.Desktop
 {
@@ -7,11 +9,11 @@ namespace MavenThought.MediaLibrary.Desktop
     /// </summary>
     public partial class MainWindow
     {
-        public MainWindow(UIElement addMovies)
+        public MainWindow(IEnumerable<UIElement> children)
         {
             InitializeComponent();
 
-            this._panel.Children.Add(addMovies);
+            children.ForEach(c => this._panel.Children.Add(c));
         }
     }
 }
