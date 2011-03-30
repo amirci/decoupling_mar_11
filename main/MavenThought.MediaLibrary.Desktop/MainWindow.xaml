@@ -1,0 +1,10 @@
+﻿<Window x:Class="MavenThought.MediaLibrary.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Movie Library" 
+        Height="350" 
+        Width="525">
+    <DockPanel Name="_panel">
+
+    </DockPanel>
+</Window>

@@ -1,0 +1,38 @@
+Decoupling using Event Aggregator - Dot Net User Group - Mar 2011
+
+Author: Amir Barylko
+Contact: amir@barylko.com
+Twitter: @abarylko
+
+The source in this repository contains the demo used for the presentation.
+
+Folder structure of the project:
+	MediaLibrary
+		--- MavenThought.MediaLibrary.sln : Main solution file
+		--- Rakefile: Main rake file to launch build, test, etc. Do rake -T to get all the tasks available.
+		+-- main: Project files included in the solution
+		+-- test: Test project files included in the solution
+		+-- tools: Tools used to run tests, xslt, etc.
+		
+
+Prerequisites to run it:
+	* Install ruby.
+		Here some instructions: http://rubyinstaller.org/
+
+	* Make sure ruby is in the path, then run the following commands:
+		- gem update --system
+		- gem install rake bundler --no-ri --no-rdoc
+	
+Prerequisites to modify it:
+	* VS 2010
+	
+		
+Sanity check:
+	* From command prompt, on the root of the project run "rake -T", u should see all the tasks.
+	* From command prompt, on the root of the project run "rake test:all", all tests should run, u should see the output on the command window.
+			
+Any issues setting up the code let me know and I'll help you.
+
+Any comments, bugs, issues, please contact me.
+
+Enjoy.
