@@ -88,6 +88,10 @@
     <Compile Include="netfx\System\Guard.cs" />
     <Compile Include="netfx\System\Windows\Input\DelegateCommand.cs" />
     <Compile Include="ILibraryView.cs" />
+    <Compile Include="Poster\PosterView.xaml.cs">
+      <DependentUpon>PosterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Poster\PosterViewModel.cs" />
     <Compile Include="Tasks\RegisterHandlersTask.cs" />
     <Compile Include="Registration.cs" />
     <Compile Include="Tasks\ShowWindowTask.cs" />
@@ -114,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Poster\PosterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -142,7 +150,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Poster\" />
     <Folder Include="Reviews\" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +161,17 @@
       <Project>{B0460A37-24B0-4826-8BB7-AFFDA8A40B0F}</Project>
       <Name>MavenThought.MediaLibrary.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\BlazingSaddles.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CanadianBacon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\_blank.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

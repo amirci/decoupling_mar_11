@@ -5,7 +5,7 @@ using MavenThought.Commons.WPF.Events;
 using MavenThought.MediaLibrary.Core;
 using MavenThought.MediaLibrary.Desktop.AddMovie;
 using MavenThought.MediaLibrary.Desktop.Contents;
-using MavenThought.MediaLibrary.Desktop.Tasks;
+using MavenThought.MediaLibrary.Desktop.Poster;
 using MavenThought.MediaLibrary.Domain;
 
 namespace MavenThought.MediaLibrary.Desktop
@@ -20,7 +20,15 @@ namespace MavenThought.MediaLibrary.Desktop
                     .ImplementedBy<MovieLibrary>(),
                 Component
                     .For<IEventAggregator>()
-                    .ImplementedBy<EventAggregator>(),
+                    .ImplementedBy<EventAggregator>());
+
+            RegisterViews(container);
+        }
+
+        private void RegisterViews(IWindsorContainer container)
+        {
+            container.Register(
+                // Add movie
                 Component
                     .For<AddMovieViewModel>()
                     .Named("AddViewVM"),
@@ -30,6 +38,17 @@ namespace MavenThought.MediaLibrary.Desktop
                     .Parameters(Parameter
                                     .ForKey("DataContext")
                                     .Eq("${AddViewVM}")),
+                // Poster
+                Component
+                    .For<PosterViewModel>()
+                    .Named("PosterVM"),
+                Component
+                    .For<ILibraryView>()
+                    .ImplementedBy<PosterView>()
+                    .Parameters(Parameter
+                                    .ForKey("DataContext")
+                                    .Eq("${PosterVM}")),
+                // Library contents
                 Component
                     .For<LibraryContentsViewModel>()
                     .Named("ContentsVM"),
@@ -38,8 +57,7 @@ namespace MavenThought.MediaLibrary.Desktop
                     .ImplementedBy<LibraryContentsView>()
                     .Parameters(Parameter
                                     .ForKey("DataContext")
-                                    .Eq("${ContentsVM}"))
-                );
+                                    .Eq("${ContentsVM}")));
         }
     }
 }
